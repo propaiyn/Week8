@@ -1,0 +1,48 @@
+Local Type Inference
+---------------------
+
+Substitute var keyword for any type of local variable
+    To improve code readability
+
+public void readFile(String path) {
+  try (BufferedFileInputStream bfis = new BufferedFileInputStream(path)) {
+    // file stuff
+  }
+}
+
+IS THE SAME AS
+
+public void readFile(String path) {
+  try (var bfis = new BufferedFileInputStream(path)) {
+    // file stuff
+  }
+}
+
+EXCEPT IT IS MUCH SHORTER
+
+BELOW DOESN'T WORK
+-----------------
+
+var a = null;
+  a = 37; // adding a value afterwards doesn't help
+  var b;  // still doesn't work
+-----------------
+  var num = 27;
+  // Type is inferred to be Integer
+  num = "Bonjour";
+  // Can't save a String to an Integer variable
+-----------------
+class SimpleClass {
+var classMember = new Object(); // compilation error
+}
+-----------------
+class SimpleClass {
+  void method(var param) {
+    // another compilation error
+  }
+}
+
+DO NOT USE IT ALL THE TIME; ONLY when it makes code concise and easier to read
+
+https://openjdk.org/projects/amber/guides/lvti-style-guide
+
