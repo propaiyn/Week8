@@ -1,0 +1,17 @@
+Ensures one instance of its kind exists, single point of access globally
+             access object from anywhere in app
+             e.g. dont want to make a new database instance each time
+                  singleton database instance is used throughout program
+
+all implementations of the singleton pattern have 2 common behaviours
+    private constructor (prevents other objects using the new operator in the singleton class)
+    static creation method that acts as a constructor (method calls the private constructor -> object made->saved under static
+    all following calls to this method return the cached object)
+
+
+One class will only ever make one object
+
+class holds all  potential scrabble letters, and spits out new ones when requested
+    each player shares the same potential listof letters
+    each player has their own set of letters
+

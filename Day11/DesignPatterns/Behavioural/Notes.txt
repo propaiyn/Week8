@@ -1,0 +1,28 @@
+Behavioural design patterns
+
+Improve/streamline interactions between objects
+
+Chain of responsibility
+
+Sends data to an object and if object cant use
+     it sends to other objects to see if they can
+
+Example sends 2 numbers and a command and the 4 objects decide
+which can handle the requested calculation
+
+chain interface (handler)
+       setNextChain(chain)
+       passed a chain object
+        -> i.e. if add numbers cant do the calculation
+          then the next chain is subtract numbers etc...
+
+Strategy pattern
+
+NEVER add a method in a superclass that doesnt pertain to 
+subclasses
+
+dont force using interfaces
+
+reduce duplicate code
+
+

@@ -1,0 +1,32 @@
+Should not be forced to depend on interfaces ith methods you arent going to use
+All methods in an interface must all be implemented at once (Cohesive, single function)
+
+e.g.
+
+public interface SpreadsheetConverter{
+    public Csv ExcelToCsv();
+    public Excel CsvToExcel();
+    public Pdf ExcelToPdf();
+    public Pdf CsvToPdf();
+}
+
+public class Converter implements SpreadsheetConverter{
+    public Csv ExcelToCsv(){
+        // CSV -> Excel conversion logic
+    }
+
+    public Excel CsvToExcel(){
+        /// Excel -> CSV conversion logic
+    }
+
+    public Pdf ExcelToPdf() throws UnsupportedOperationException{
+        throw new UnsupportedOperationException();
+    }
+
+    public Pdf CsvToPdf() throws UnsupportedOperationException{
+        throw new UnsupportedOperationException();
+    }
+}
+
+// The last two methods from the interface are unused and throw exceptions and do not follow the segregation principles
+// Solution = Split up interfaces to remove unecessary methods

@@ -1,0 +1,91 @@
+2 Main principles of dependancy inversion
+
+High-level modules should not depend on low-level modules - both should depend on abstractions, such as interfaces
+
+Abstractions should not depend on details (concrete implementations) - instead, details should depend on abstractions
+
+Both higher and lower level modules should depend on the same abstractions; NOT EACH OTHER
+
+e.g.
+
+public class WeatherTracker {
+    private String conditions;
+    Phone phone;
+    Email email;
+
+    public WeatherTracker() {
+        phone = new Phone();
+        email = new Email();
+    }
+
+    public void setConditions(String weather) {
+        this.conditions = weather;
+        if(weather.equals("rainy")) {
+            String alert = phone.generateWeatherAlert(weather);
+            System.out.println(alert);
+        }
+        if(weather.equals("sunny")) {
+            String alert = email.generateWeatherAlert(weather);
+            System.out.println(alert);
+        }
+    }
+
+    public String getConditions() {
+        return conditions;
+    }
+}
+
+public class Email {
+    public String generateWeatherAlert(String conditions) {
+        String alert = "It is " + conditions;
+        return alert;
+    }
+}
+
+public class Phone {
+    public String generateWeatherAlert(String conditions) {
+        String alert = "It is " + conditions;
+        return alert;
+    }
+}
+
+/* The above does not adhere to the dependancy inversion principle as the higher weathertracker module 
+ * is dependant on the lowe phone and email modules/classes
+ * we want them to depend on the same abstraction, thus........
+ */
+
+public interface Notifier{
+    public void alertWeatherConditions(String weatherConditions);
+}
+
+public class Email implements Notifier {
+    public void alertWeatherConditions(String conditions) {
+        if (conditions.equals("sunny")) {
+            System.out.println("It is sunny");
+        }
+    }
+}
+
+public class Mobile implements Notifier {
+    public void alertWeatherConditions(String conditions) {
+        if(conditions.equals("rainy")) {
+            System.out.println("It is rainy");
+        }
+    }
+}
+
+public class WeatherTracker {
+    private String conditions;
+
+    public void setConditions(String weather) {
+        this.conditions = weather;
+    }
+
+    public void notify(Notifier notifier) {
+        notifier.alertWeatherConditions(conditions);
+    }
+
+    public String getConditions() {
+        return conditions;
+    }
+}

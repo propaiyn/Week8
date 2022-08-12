@@ -1,0 +1,22 @@
+Structure classes and objects meaningfully (using inheritance and interfaces)
+The structural patterns are:
+    Flyweight
+    Adapter
+    Composite
+    Decorator
+    Façade
+    Proxy
+    Bridge
+    Filter
+
+ADAPTER PATTERN
+
+Allows objects with incompatibile interfaces to collaborate
+Special object which converts the interface of one object so another object can understand it
+
+FACADE PATTERN
+
+Creating a simplified interface that performs many actions behind the scenes
+e.g. 
+    can i withdraw 50 pounds?, is account security code valid? are funds avaliable?
+    ->>>> make changes accordingly

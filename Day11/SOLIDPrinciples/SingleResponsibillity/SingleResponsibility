@@ -1,0 +1,4 @@
+Responsibillities are essentially reasons  to change
+i.e. class has a single responsibillity, hasa asingle reason to change
+If a class has more than one responsibillity or purpose, they should be split into separate classes
+Should be broken down so  the classes depend less on eachother and increases the cohesion of the components in that class

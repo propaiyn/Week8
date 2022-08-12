@@ -1,0 +1,5 @@
+Open for extension but closed for modification
+previous code has undergone testing and is working so just extend rather than edit
+Write code that doesnt have to be chnaged every time requirements change
+
+GENERALLY DONE USING INHERITANCE AND POLYMORPHISM

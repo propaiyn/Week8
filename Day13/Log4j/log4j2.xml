@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <File name="FILEOUT" fileName="errors.log" append="false"> <!-- file appender, name is where message is written, append is false meaning  it will be overwritten -->
+            <PatternLayout>
+                <Pattern>%d{yyyyMMdd HH:mm:ss} %-5p [%t] %C{2} %F%L - %m%n</Pattern> <!-- formatting -->
+            </PatternLayout>
+        </File>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="debug"> <!-- this is where the level of the logger is configured -->
+            <AppenderRef ref="FILEOUT" level="debug"/>
+            <AppenderRef ref="STDOUT" level="info"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+        <!-- different levels of logging i.e.
+        All, fatal, error, warn, info etc...
+        -->
+
+        <!-- file appender lets us set what messages look like-->
+
+        <!-- need to import log4j library-->
+        <!-- logger object must be created: public static Logger LOGGER = LogManager.getLogger();-->
+        <!-- need to import log4j library-->
+        <!-- to use: public void logMessage(String message) {
+    LOGGER.info(message); }-->
+

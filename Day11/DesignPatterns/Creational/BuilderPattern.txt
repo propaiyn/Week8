@@ -1,0 +1,69 @@
+Creational design patterns are designed to make object creation easier, while hiding the logic from view
+    The creational patterns are:
+        Factory
+        Builder
+        Singleton
+        Prototype
+        Abstract Factory
+
+Builder pattern takes several objects and makes a complex object
+
+Builders prevent the issue of creating multiple objects from a class which contains a large number of parameters.
+    This means classes dont become overloaded with different constructors
+
+USECASES
+
+    Build objects from other objects
+
+    Creation of these parts independent from  main object
+
+    Hide creation of parts from client so both arent dependant
+
+    Builder knows the details and nobody else does
+
+
+QA Example
+
+
+​public class TraineeBuilder {​
+
+    private String name; //we do not want a default name.​
+    private int age = 0; //default age​
+    private String technology = "nothing"; //default technology​
+
+    //Method 1                     - used to create trainee objects
+    public TraineeBuilder(){}​
+
+    //Method 2
+    public Trainee buildTrainee(){​          - actually creating a trainee object, fully instantiated and returned
+    return new Trainee(name,age,technology);​
+    }
+    ​//Method 3
+    public TraineeBuilder name(String passedName){​
+        this.name = passedName;​
+    return this;​
+    }
+    ​​
+    //Method 4
+    public TraineeBuilder age(int passedAge){​
+        this.age = passedAge;​
+    return this;​
+    }​
+
+    //Method 5
+    public TraineeBuilder technology(String passedTechnology){​
+    this.technology = passedTechnology;​
+    return this;​
+    }​
+}​
+
+public Trainee t1 = new TraineeBuilder()​
+    .name("connor")​
+    .buildTrainee();​ // Trainee with values connor, o, nothing -- defaults will autopopulate
+
+public Trainee t2 = new TraineeBuilder()​
+    .name("jeff")​
+    .age(19)​
+    .technology("devops")​
+    .buildTrainee();​ // Trainee with values jeff, 19, devops  // objects are built with hidden logic
+                                                              // default fields are auto populateds
